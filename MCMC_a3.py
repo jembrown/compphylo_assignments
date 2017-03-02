@@ -78,7 +78,7 @@ def plots(param_vals, likelihoods, posteriors):
 
 	plt.hist(posteriors)
 	plt.title("Posteriors")
-	plt.xlabel("Priors")
+	plt.xlabel("Posteriors")
 	plt.ylabel("Frequency")
 	plt.show()
 
