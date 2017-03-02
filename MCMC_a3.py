@@ -66,19 +66,19 @@ def plots(param_vals, likelihoods, posteriors):
 	'''Histograms of the parameter values (priors), likelihoods and posteriors.'''
 	plt.hist(param_vals)
 	plt.title("Priors")
-	plt.xlabel("Priors")
+	plt.xlabel("param_vals")
 	plt.ylabel("Frequency")
 	plt.show()
 
 	plt.hist(likelihoods)
 	plt.title("Likelihoods")
-	plt.xlabel("Priors")
+	plt.xlabel("likelihoods")
 	plt.ylabel("Frequency")
 	plt.show()
 
 	plt.hist(posteriors)
 	plt.title("Posteriors")
-	plt.xlabel("Posteriors")
+	plt.xlabel("posteriors")
 	plt.ylabel("Frequency")
 	plt.show()
 
@@ -96,7 +96,7 @@ def MCMC():
 	param_vals = []#define a list to hold the chained parameter values from the Markov chain.
     likelihoods =  []#define a list to hold the found likelihoods
     posteriors = []#define a list to hold the posteriors 
-    '''VVVV chain VVVV'''
+    '''chain'''
 	for val in range(100):#go through an x number of replicates, here 100
 		new_param = draw_param(n, p)#each iteration draw a new and random parameter in n trials with a probability of p
 	    #normp = np.random.triangular(0,1,1)
