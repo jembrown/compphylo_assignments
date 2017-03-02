@@ -132,8 +132,10 @@ def MCMC():
 	        new_post = posterior_UN(prr, like(new_param, n, p))
 	        posteriors.append(posterior_UN(prr, like(new_param, n, p)))
 	        param_vals.append(acc_rej(curr_post, new_post))
-                print('parameter values', param_vals)
 	plots(priors.append(prr), param_vals, likelihoods, posteriors)#now plot the histograms.
+	print('parameter values are ', param_vals,'\n',
+	      'likelihoods are ', likelihoods,'\n',
+	      'posteriors are ', posteriors)
 	
 
 if __name__ == '__main__':
