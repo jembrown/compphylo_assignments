@@ -1,0 +1,403 @@
+last task of A2 in compphylo youll use the module random to pull from a discrete pool of random numbers.
+
+020217
+
+often we are interested in the maximum liklihood
+
+bayes therom=> P(A|B)=P(B|A)P(A)/P(B)
+
+if event b happens and is independant of event a knowing that b happened does not give any info about a.
+
+***liklihoods in general are relative and are interprated in the context of other liklihoods
+
+P(H|)=P(D|H)P(H)/P(D)
+^     ^     ^    ^
+A     B     C    D
+
+-A=posterior
+-B=liklihood
+-C=prior (hypothesis of the data before seeing the data, for example weather forcast two days from now based on prior knowledge about climate trends.)
+-D=normalizing constant(marginal liklihood)(observing the data in all possible circumstances. many times there is now way to calculate the probability of the data)
+
+probabilities need to add to 1 always!
+
+where D = data and H = hypotheses (baysian way of testing different truths)
+
+***read the chapters on discrete and continuous distributions from the readings on the 16gb and from the MolEvo book.
+
+note beta distribution and the parameters 
+
+remember the idea of integration, or the area beneath a given curve. 
+
+---
+odds Ratio
+
+the overall probability is constant, and the P(D) cancles out and we do not need to know the normalizing constant. 
+
+so we have some prior knowledge about h1 h2 and then we collect data that updates our beliefs about h1 and h2 and now we have a new view of the circumstances.
+---
+
+say you go out into the field and collect an organism and you compare the highets or weights and want to know if it is normally distributed amongst te population. and thus you have stdev and mean (mew)
+
+MARGINALIZING
+what is the probability that m1 you get stdev1 etc. this is called the joint probability. and marginal probabilities correspond to the sum of the row are column. 
+
+*in general summing across some sort of uncertainty!
+
+when marginalizing continuous values of sigma you integrate(adding infinitely many values) and for discrete values you add.
+---
+
+how do we estimate these posterior probabilities??
+
+numerical methods to estimate posterior distributions.
+--monte carlo methods
+these rely on drawing random numbers 
+
+importance sampling icould be used for distributions that are impossible to pull values from so you use a different distribution for the sake of conveniece that covers the same range of the distribution of interest. then to calculate the values from the distribution of interest you apply weights to the values of the sampling distribution 
+
+importance sample fails when the distribution of interest is really peaked or one that has many parameteres. 
+
+-
+
+Markov Chain Monte Carlo
+(metropolis et al.)
+read in the MolEvo book!!!!
+play with Toy MCMC exploration
+
+02/09/17
+
+changing the sampling distribution wider we change the precision/standard deviation
+
+for toy of mcmc the burn in is the the percent to ignore of the initial samples taken that are to far abstracted from the distribution we are interested in.
+
+compare summaries of multiple independant runs of MCMC's increases the confidence of the sampling distribution and accuracy.
+
+through time the values correlate to eachother. High  autocorrelation are values that are rather similar to eachother and low autocorrelation are values that are more distant
+
+ideally we want the proposal distribution rougly the same size as the distribution we are interested in.
+
+acceptance rate is how many proposals we accept of values so ideally a rate of 20-70% is sufficient.
+
+________
+02/14/17
+________
+
+mixing is an MCMC that is sampling well accross the parameter space.
+
+convergance is the longterm outcome of mixing so the overall shape 
+
+if the mixing is good we have low autocorrelation
+
+PSRF - potential scale reduction factor measures the inter-run variance (between P of two different runs of measuring multiple peaks) compares the variation of two chains..
+
+stationay distribution is a good representation of the posterier
+
+hastings ratio is the acceptance ratio for mcmc
+
+Metropolis coupling is a way to traverse peaks and valleys and the coupling is a term indicating that there is two mcmc chains sampling two spaces of the parameters.
+
+when compare to accept or reject r we add a correction value that that corrects for the facthat you are sampling in one direction more than the other this is the Hastings ratio(?)
+
+***chapters 6-7 of the yangs MolEvo book. [by next tuesday]
+
+_______
+Assignment2 discussion::
+
+use the while loop if you do not know how may iteration are needed 
+
+remember to use sfety check for returns that are unreasonable. such as factorial 0
+
+"greedy" hillclimbers are those that go straight up the peak as fast as possible.
+thats why you need to run multiple analyses with different random starting point.
+
+liklihood ratio test looks at the acceptance of p and if it resonable or not..
+***** for the simulation in assignment2 try rewriting so that it samples from the binomial and the number of successes and it probability of seeing those successes..
+
+----------
+object oriented programming.
+
+*using classes
+
+perhaps making the mcmc as an abject with its own properties.
+
+__init__ is an example of a constructor
+
+----
+02/21/2017
+
+MLE = maximum likelihood estimate is a parameter value given our likelihood scores it is the best estimate.
+
+tiny pvalues means that the distribution falling to the right are much less  probable than if the pvalue was closer to one indicating that the values to the right would be much more probable.
+
+degree of freedom for chisqr is the number of estimated parameters.
+
+if the model had no relation to a normal distribution you CANNOT use a likelihood ratio test 
+
+--
+what is a markov chain (read the markov chain chapter)
+
+i.i.d.  independent and identically distributed
+these series of values that were drawn randomly from a distribution are not dependent on each other in anyway 
+(not necessarily realistic)
+
+instead add a tad bit of dependance where the 2nd draw is dependant on the first and the third draw is only dependant on the second and not the first 
+
+markov property = P=(Xn+j - f|Xn - 1)
+                     next     now
+
+state space is the only set of values associated with the variables
+Xi e{A,C,G,T}  changes in nucleotides 
+
+state spaces are discrete which only take a fixed set of values.
+
+state spaces can also be continuous 
+example  Xi e|0,1| 
+example changes in traits 
+
+Transition Matrix
+
+	R 	S
+	
+R 	0.7	0.3
+
+S 	0.3	0.7
+
+conditional probabilities
+'based on my current state where am i likely to go next?'
+P(Xn+1 = R|Xn = R) = 0.7
+P(X+1 = S|Xn = R) = 0.3
+
+discrete time and discrete states
+the rows are where we are coming from and columns are where we are going to
+
+
+Create a Markov chain class with these values:
+
+state = ['r','s']
+
+trans = [[0.7,0.3],
+ 		 [0.3,0.7]]
+
+sampled = []
+
+methods:
+run(sample states for each step)
+clear(remove any sampled states)
+
+***important exercise***
+
+a possible way to obtain better priors to analyze a subset of a large dataset. this way would have the priors would represent the data better.
+in general the posteriors should rise on the trace plot
+
+
+define markov chain class
+	-discrete state discrete time chain
+	-simulate for n iterations
+	-run replicates
+	-summarize states
+
+
+------
+030717
+
+adapt the chain script(that is sampling discrete probabilities) to pull from a continuous waiting times
+have a good idea of the steps that you need to execute 
+
+
+------
+031617
+
+***workshop in applied phylogenetics at bodega marine lab***
+analyze your own data to learn the techniques and methods in applied phylogenetics
+
+on their website they have lectures and tutorials on eq. species delimitation
+
+
+
+
+March 23 ASSIGNMENT4!!! the markovchain_oop with continuous chain added on
+
+
+stationarity---> conserved frequencies/probabilitys of multiple chains over time
+
+but if we start a bunch of chains at once at the same state, they probably will not have stationarity
+
+so if you run it for so long the stationary probability will eventually become 0,5 which signifies the loss of any memory of where the chains have started. Similar to the case of really long branches on phylo trees.  
+
+--as long as the transition probabilities are oughly equal to each the the rate of converging to stationary distribution is quick. 
+
+
+
+
+
+Be sure to read the Yang molecular evo book to get grasp on dukekanner model. infering the amount of evolution that occurs on each bracnh//sequence evolution
+
+chapter1 has a nice overview and a tale that explains the definitions of Qmatricies on nucleotide evolution
+
+
+F81 model uses the stationary frequency (pi for each of the nucleotide). 
+
+we put the pis into the matricies in phylogenetics is the probability of changing from c to a should be reversable
+
+(pi i)(P ij) = (pi j)(P ji)
+
+
+to infer an unrooted tree according to the relative frequencies and the rates of change(propencity for one base to change to a specific base) we use GTR model
+
+
+read the posted papers about revbayes 
+
+
+
+----
+03/21/17
+
+
+pi is the equilibrium frequency. frequencies of the bases
+R is 'how much a base wants to change to another'..the propencity of one nucletide to change into another. Transitions vs transversions.
+
+combine these elements for a Q-matrix
+
+reversiblility is important because we are wanting to answer questions for an unrooted tree and sequence evolution.
+
+the frequencies have to add to one in the matrix
+
+
+**************scaling factor is the weighted avg of the diagnals. diagnal value times the frequency of each base, added and divided by N. with this scaling factor you divide everything in the matrix to normalize the whole matrix.
+---> write a function called rescaling to return a normalized matrix of the original matrix.
+ * * * remember ea diagnal element is negative. diagnal value = QAA,QCC,QGG,QTT
+
+eg:
+scaling factor
+mu = 1/(piA(-QAA)+piC(-QCC)+piG(-QGG)+piT(-QTT))
+
+
+Q matrix for CTMC probability is relative to amount of time:
+branch length = v
+
+P(v=0.1) = e^(Q*0.1)
+there is a 10% chance that any given site will change...the more sites you have to closer a true probability you have.
+
+once you get the continuous time simulator working you can tesk P(v=infinity) by looking at R=stationary frequency of A,C,G,T. numpy has the ability to calculate this.
+
+
+
+
+due to the incredibly slow calculations codon models require more assumptions but are inherently more realistic than nucleotide models. 
+
+
+
+
+TREES
+
+bifurcating is where 1 node has three branches 
+polytomy is where 1 node has more than three --- unresolved
+
+leaves (external nodes, MRCA notation) on the tree are the tips of the tree and are the things that we are able to sample.
+
+internal nodes represent speciation events or gene duplication
+
+rooted is the most recent common ancestor of the progeny represented.
+
+cladogram is a tree that represents only relationships of the individuals and there is no concept of time. there are no meaning to branch lengths
+phylogram represents some sort of divergence and changes 
+kronogram represents time 
+
+bipartition is a branch that divides one group of taxa from another. nomencalture eg: 123|45 or ***..
+
+an internal node is always a MRCA but we need to know where the root goes to infer more info about that ancestor. Unrooted trees have less info than rooted.
+
+typically we root a tree using n outgroup. where the outgroup is not in the ingroup to orient time correctly.
+
+--ultrametric trees is where all the tips of the tree line up and are used for kronograms
+--rates of eveolution ofter are diferent between spp on phylograms thus the tree is usually not ultrametric
+
+----
+03/23/17
+
+REVBAYES
+
+proportion of variance at sites = i
+proportion of sites that are likely never to change
+i is course because the only values are 0 and 1
+
+
+g = gamma distribution
+this is a flexible distribution and ranges from 0 to infinity
+there are two parametes in this distribution, alpha and beta where we estimate alpha which can vary from 0-infinity (this is the shape) if alpha is near infinity then the rate(x axis) peaks at 1. for very small values of alpha then there would be a high variance across sites with an exponential type distribution.
+
+the mean of the gamma dist has to be one
+
+this is a form of a mixture model.
+we are going to calculate the likelihood of each site we marginalize across all possible rates
+
+read the fucking book..
+
+you can break up the distribution into categories (~4) of equal probabilities, so what are doin with this technique we are calculating the likelihoods of each categories and then averaging them to get the marginal likelihood of a proposed value for alpha.
+
+using i and g in the same model can skew identifiability and causes ridges in parameter space which would cause a problem for MCMC mixing
+
+this accomidating rates across sites is incredibly important for models!!
+
+yang book and hosselbeck on slack.
+
+computation time is directly proportional to the number of categories 
+
+
+in general the shorty the tree inferences of changes can have high assumptions
+
+-----
+graphical models (revbayes)
+
+read the graphical paper on slack!!
+
+
+
+
+-------
+040617
+
+
+majority rule consensus tree 
+greedy consensus ranks bipartitions by branch compatibility and common-ness
+-which is garunteed to give a bifurcating tree.
+-trait evolution
+
+
+credibility interval is the cummulative probability of trees from the best to worst topologies 
+
+correlation between parameter values are something to avoid when creating models for phylogenetic analyses
+-such as using both i and g
+
+branch length is the number of changes per site.
+
+jeremy brown--causes of inaccurate bayesian branch lengths
+--compound dirichlet parameter distribution
+you can set up revbayes scripts to include this type of prior.
+
+Rannala--tail paradox partial identifiability and influential priors in bayesian branch lenth inference.
+
+
+
+
+
+
+how to pick models
+--jmodel test
+--bayes factors using marginal likelihoods.
+
+######
+041817
+------
+get a fundamental understanding of how these things work by using python.
+class project to analyze a dataset using revbayes and likelihood calculations 
+-set up an analysis to answer a specific question.
+
+######
+042517
+------
+area under the un-normalized density using 'power posteriors'  (p(D|Theta)^beta)(p(Theta))
+
+
+
+look at the outliers for the cercospora tree, are the sequences shifted relative to everyone else. remember the turtle and corc example.
