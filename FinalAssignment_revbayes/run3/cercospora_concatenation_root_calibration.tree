@@ -1,0 +1,35 @@
+#NEXUS
+
+	Begin taxa;
+	Dimensions ntax=24;
+	Taxlabels
+		C_achyranthis_CPC_10091
+		C_aff_canescens_CPC_11640
+		C_agavicola_CBS_117292
+		C_althaeina_CBS_248_67
+		C_apii_CPC_18601
+		C_beticola_CPC_5123
+		C_campi_silii_CBS_132625
+		C_capsici_MUCC_574
+		C_cf_flagellaris_CPC_1052
+		C_cf_modiolae_CPC_5115
+		C_cf_physalidis_CBS_765_79
+		C_cf_resedae_CBS_257_67
+		C_chinensis_CBS_132612
+		C_dispori_CBS_132608
+		C_fagopyri_CBS_132623_TYPE
+		C_kikuchi_CBS_128_27_TYPE
+		C_mercurialis_CBS_549_71
+		C_punctiformis_CBS_132626
+		C_sojina_CPC_17972
+		C_zeina_CPC_11995
+		Cladosporium_cf_subtilissimum_CPC_12484
+		ahzc9
+		cf_nicotianae_CBS_131_32
+		cf_sigesbeckiae_CBS_132606
+		;
+End;
+
+Begin trees;
+tree TREE1 = [&R](((((((((((((C_apii_CPC_18601[&index=9]:0.308425,C_beticola_CPC_5123[&index=8]:0.308425)[&index=25,posterior=1.000000,age_95%_HPD={0.183532,0.524524}]:0.227109,C_cf_resedae_CBS_257_67[&index=7]:0.535534)[&index=26,posterior=1.000000,age_95%_HPD={0.330651,0.909135}]:0.147301,(C_chinensis_CBS_132612[&index=6]:0.312157,C_dispori_CBS_132608[&index=5]:0.312157)[&index=27,posterior=1.000000,age_95%_HPD={0.182041,0.520849}]:0.370677)[&index=28,posterior=1.000000,age_95%_HPD={0.417547,1.1231}]:0.207586,cf_nicotianae_CBS_131_32[&index=4]:0.890420)[&index=29,posterior=1.000000,age_95%_HPD={0.546665,1.45705}]:0.116715,((C_cf_flagellaris_CPC_1052[&index=17]:0.135390,ahzc9[&index=18]:0.135390)[&index=30,posterior=1.000000,age_95%_HPD={0.07497,0.233347}]:0.636468,C_agavicola_CBS_117292[&index=19]:0.771859)[&index=31,posterior=1.000000,age_95%_HPD={0.468785,1.29294}]:0.235276)[&index=32,posterior=1.000000,age_95%_HPD={0.618357,1.64811}]:0.071707,(C_althaeina_CBS_248_67[&index=16]:0.596900,C_capsici_MUCC_574[&index=15]:0.596900)[&index=33,posterior=1.000000,age_95%_HPD={0.356352,1.01532}]:0.481943)[&index=34,posterior=0.798479,age_95%_HPD={0.690774,1.93943}]:0.036575,C_cf_physalidis_CBS_765_79[&index=14]:1.115417)[&index=35,posterior=1.000000,age_95%_HPD={0.691627,1.87964}]:0.149862,(((C_fagopyri_CBS_132623_TYPE[&index=12]:0.454661,cf_sigesbeckiae_CBS_132606[&index=11]:0.454661)[&index=36,posterior=1.000000,age_95%_HPD={0.264603,0.763353}]:0.190151,C_kikuchi_CBS_128_27_TYPE[&index=10]:0.644812)[&index=37,posterior=1.000000,age_95%_HPD={0.380467,1.07212}]:0.434002,C_aff_canescens_CPC_11640[&index=13]:1.078814)[&index=38,posterior=1.000000,age_95%_HPD={0.655989,1.83234}]:0.186466)[&index=39,posterior=1.000000,age_95%_HPD={0.779726,2.12067}]:0.206607,C_mercurialis_CBS_549_71[&index=20]:1.471886)[&index=40,posterior=1.000000,age_95%_HPD={0.895905,2.49005}]:0.083152,(((C_achyranthis_CPC_10091[&index=23]:0.318243,C_campi_silii_CBS_132625[&index=24]:0.318243)[&index=41,posterior=1.000000,age_95%_HPD={0.190389,0.539995}]:0.044685,C_sojina_CPC_17972[&index=22]:0.362928)[&index=42,posterior=1.000000,age_95%_HPD={0.215772,0.611204}]:0.168744,C_punctiformis_CBS_132626[&index=21]:0.531672)[&index=43,posterior=1.000000,age_95%_HPD={0.327427,0.90086}]:1.023366)[&index=44,posterior=1.000000,age_95%_HPD={0.947335,2.61658}]:0.214167,C_cf_modiolae_CPC_5115[&index=3]:1.769205)[&index=45,posterior=1.000000,age_95%_HPD={1.07062,2.98528}]:2.137532,C_zeina_CPC_11995[&index=2]:3.906737)[&index=46,posterior=1.000000,age_95%_HPD={2.5226,6.98046}]:58.919780,Cladosporium_cf_subtilissimum_CPC_12484[&index=1]:62.826516)[&index=47,posterior=1.000000,age_95%_HPD={56.8239,69.8311}]:0.000000;
+End;
